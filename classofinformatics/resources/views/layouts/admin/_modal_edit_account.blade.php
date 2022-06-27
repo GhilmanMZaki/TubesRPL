@@ -44,7 +44,7 @@
                             <input type="number" class="form-control text-dark" name="editNis" id="editNis">
                         </div>
                         <div class="form-group">
-                            <label for="editSemester" class="col-form-label">Kelas</label>
+                            <label for="editSemester" class="col-form-label">Semester</label>
                             <select name="editSemester" class="form-control show-tick text-dark" id="">
                                 @foreach ($semesters as $key => $semester)
                                     <option value="{{ $key }}">{{ $semester }}</option>
