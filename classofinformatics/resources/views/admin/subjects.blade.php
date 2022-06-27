@@ -20,17 +20,6 @@
                     </ul>
                     <div class="tab-content mt-0">
                         <div class="tab-pane show active" id="mapel">
-                            <div class="row my-3">
-                                <div class="col-lg-8 col-md-12 col-sm-12"></div>
-                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                    <div class="input-group">
-                                        <input type="search" class="form-control bg-white rounded text-dark"
-                                            placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                        <button type="button" class="btn btn-outline-primary"><i
-                                                class="icon-magnifier"></i></button>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="table-responsive">
                                 <table class="table table-hover table-custom spacing8">
                                     <thead>
