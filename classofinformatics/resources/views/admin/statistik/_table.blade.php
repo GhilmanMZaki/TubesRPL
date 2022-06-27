@@ -8,7 +8,7 @@
                     <th>Nomor Induk</th>
                 @endif
                 @if (request()->route('role') === 'STUDENT')
-                    <th>Kelas</th>
+                    <th>Semester</th>
                 @endif
                 <th>Username</th>
                 <th>Status</th>
@@ -71,7 +71,7 @@
                     <th>Nomor Induk</th>
                 @endif
                 @if (request()->route('role') === 'STUDENT' || request()->route('role') === 'TEACHER')
-                    <th>Kelas</th>
+                    <th>Semester</th>
                 @endif
                 <th>Username</th>
                 <th>Status</th>
@@ -96,7 +96,7 @@
                     <th>Nomor Induk</th>
                 @endif
                 @if (request()->route('role') === 'STUDENT')
-                    <th>Kelas</th>
+                    <th>Semester</th>
                 @endif
                 <th>Username</th>
                 <th>Status</th>

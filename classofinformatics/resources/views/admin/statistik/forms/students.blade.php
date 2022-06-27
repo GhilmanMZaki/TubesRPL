@@ -29,7 +29,7 @@
     <div class="row clearfix" onclick="$('#{{ request()->route('role') }}-alert').hide('fast')">
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label>Kelas</label>
+                <label>Semester</label>
                 <select name="{{ request()->route('role') }}semester" class="form-control show-tick text-dark"
                     id="">
                     @foreach ($semesters as $key => $semester)

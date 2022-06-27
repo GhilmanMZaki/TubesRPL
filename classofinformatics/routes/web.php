@@ -35,7 +35,7 @@ Route::get('/login', [LoginController::class, 'check'])->name('login');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::group(['middleware' => ['auth', 'role:ADMIN,TEACHER,STUDENT']], function(){
+Route::group(['middleware' => ['auth', 'role:ADMIN,TEACHER,STUDENT']], function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/change-password', function () {
@@ -45,14 +45,14 @@ Route::group(['middleware' => ['auth', 'role:ADMIN,TEACHER,STUDENT']], function(
 });
 
 // Admin
-Route::group(['middleware' => ['auth', 'role:ADMIN']], function(){
-    Route::name('admin.')->group(function() {
+Route::group(['middleware' => ['auth', 'role:ADMIN']], function () {
+    Route::name('admin.')->group(function () {
         Route::get('/statistik/accounts/{role}', function () {
             return view('admin.statistik.accounts')->with('semesters', config('constant.semesters'));
         })->name('statistik.accounts');
 
         Route::get('/subjects', [SubjectController::class, 'index'])
-        ->name('subjects');
+            ->name('subjects');
         Route::post('/subjects', [SubjectController::class, 'create']);
         Route::post('/assign-subject', [SubjectController::class, 'assign']);
         Route::patch('/subjects', [SubjectController::class, 'update']);
@@ -71,9 +71,9 @@ Route::group(['middleware' => ['auth', 'role:ADMIN']], function(){
 });
 
 // Teacher
-Route::group(['middleware' => ['auth', 'role:TEACHER']], function(){
+Route::group(['middleware' => ['auth', 'role:TEACHER']], function () {
     Route::post('/upload-image', [UploadController::class, 'store'])->name('upload-image');
-    Route::name('teacher.')->group(function() {
+    Route::name('teacher.')->group(function () {
 
         Route::prefix('subject')->group(function () {
             Route::get('/course', [Teacher\CourseController::class, 'getCourse']);
@@ -133,14 +133,12 @@ Route::group(['middleware' => ['auth', 'role:TEACHER']], function(){
                 });
             });
         });
-
-
     });
 });
 
 // Student
-Route::group(['middleware' => ['auth', 'role:STUDENT']], function(){
-    Route::name('student.')->group(function() {
+Route::group(['middleware' => ['auth', 'role:STUDENT']], function () {
+    Route::name('student.')->group(function () {
         // view leaderboard
         Route::get('/student/leaderboard', [Student\LeaderboardController::class, 'index'])->name('leaderboard');
 
@@ -163,27 +161,6 @@ Route::group(['middleware' => ['auth', 'role:STUDENT']], function(){
             // route exam ini nanti diganti jadi activity aja. ini fema buat testing doang, takut bentrok kalau pake /activity juga
             Route::get('/{subject_id}/course/{course_id}/topic/{topic_id}/exam/{exam_id}', function () {
                 return view('student.activity.exam');
-            });
-            // ini testing soal sama tampilan nilai doang, buat bedain button sama kalo ada gambar. nanti dihapus aja okay. blade 2, 3 nya juga diapus aja
-            // buat result nilainya ada di activity/result blade nya ya
-            Route::get('/{subject_id}/course/{course_id}/topic/{topic_id}/activity/{activity_id}/2', function () {
-                return view('student.activity.testing-soal-berikutnya.exercise_2');
-            });
-            Route::get('/{subject_id}/course/{course_id}/topic/{topic_id}/activity/{activity_id}/3', function () {
-                return view('student.activity.testing-soal-berikutnya.exercise_3');
-            });
-            Route::get('/{subject_id}/course/{course_id}/topic/{topic_id}/activity/{activity_id}/result', function () {
-                return view('student.activity.result_100');
-            });
-            // ini juga sama buat testing soal selanjutnya doang. apus ajeu. semanggat!
-            Route::get('/{subject_id}/course/{course_id}/topic/{topic_id}/exam/{exam_id}/2', function () {
-                return view('student.activity.testing-soal-berikutnya.exam_2');
-            });
-            Route::get('/{subject_id}/course/{course_id}/topic/{topic_id}/exam/{exam_id}/3', function () {
-                return view('student.activity.testing-soal-berikutnya.exam_3');
-            });
-            Route::get('/{subject_id}/course/{course_id}/topic/{topic_id}/exam/{exam_id}/result', function () {
-                return view('student.activity.result_80');
             });
         });
     });

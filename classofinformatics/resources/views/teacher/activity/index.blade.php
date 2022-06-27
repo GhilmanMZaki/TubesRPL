@@ -47,7 +47,7 @@
                     <input type="number" min="0" class="form-control" id="time"
                         placeholder="Masukkan estimasi waktu" name="activity_time" value="{{ $activity['time'] }}">
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group mb-3" hidden>
                     <label for="exp" class="font-18">Poin Experience</label>
                     <input type="number" min="0" max="100" class="form-control" id="exp"
                         placeholder="Masukkan poin untuk siswa" name="activity_exp" value="{{ $activity['experience'] }}">
